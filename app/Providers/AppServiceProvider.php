@@ -20,6 +20,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // Barcode aliases will be registered by the BarcodeServiceProvider
+        if ($this->app->environment('production')) {
+        \URL::forceScheme('https');
+        }
     }
 }
